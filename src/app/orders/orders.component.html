@@ -1,0 +1,76 @@
+<div class="row-layout group">
+  <h5 class="content">
+    Select Employee and Product
+  </h5>
+</div>
+<igx-grid [data]="northwindQBEmployeeDto" primaryKey="employeeId" rowSelection="single" [hideRowSelectors]="true" [allowFiltering]="true" filterMode="excelStyleFilter" (rowSelectionChanging)="selectedEmployee = $event?.rowData" class="grid">
+  <igx-column field="employeeId" dataType="number" header="employeeId" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+  <igx-column field="lastName" dataType="string" header="lastName" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+  <igx-column field="firstName" dataType="string" header="firstName" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+  <igx-column field="title" dataType="string" header="title" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+  <igx-column field="titleOfCourtesy" dataType="string" header="titleOfCourtesy" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+  <igx-column field="birthDate" dataType="date" header="birthDate" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+  <igx-column field="hireDate" dataType="date" header="hireDate" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+  <igx-column field="addressId" dataType="string" header="addressId" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+  <igx-column field="notes" dataType="string" header="notes" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+  <igx-column field="avatarUrl" dataType="string" header="avatarUrl" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+  <igx-column field="reportsTo" dataType="number" header="reportsTo" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+</igx-grid>
+<igx-grid [data]="northwindQBProductDto" primaryKey="productId" rowSelection="single" [hideRowSelectors]="true" [allowFiltering]="true" filterMode="excelStyleFilter" (rowSelectionChanging)="selectedProduct = $event?.rowData" class="grid">
+  <igx-column field="productId" dataType="number" header="productId" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+  <igx-column field="productName" dataType="string" header="productName" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+  <igx-column field="supplierId" dataType="number" header="supplierId" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+  <igx-column field="categoryId" dataType="number" header="categoryId" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+  <igx-column field="quantityPerUnit" dataType="string" header="quantityPerUnit" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+  <igx-column field="unitPrice" dataType="number" header="unitPrice" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+  <igx-column field="unitsInStock" dataType="number" header="unitsInStock" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+  <igx-column field="unitsOnOrder" dataType="number" header="unitsOnOrder" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+  <igx-column field="reorderLevel" dataType="number" header="reorderLevel" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+  <igx-column field="discontinued" dataType="boolean" header="discontinued" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+</igx-grid>
+<button igxButton="contained" type="button" igxRipple (click)="dialog.toggle()" class="button">
+  Show Query
+</button>
+<div class="row-layout group">
+  <p class="content">
+    Orders filed by
+  </p>
+  <p class="content">
+    {{ selectedEmployee?.firstName }}
+  </p>
+  <p class="content">
+    {{ selectedEmployee?.lastName }}
+  </p>
+  <p class="content">
+    {{ selectedEmployee?.lastName }}
+  </p>
+  <p class="content">
+    containing
+  </p>
+  <p class="content">
+    {{ selectedProduct?.productName }}
+  </p>
+</div>
+<igx-grid primaryKey="orderId" [allowFiltering]="true" filterMode="excelStyleFilter" [data]="ordersQuery" class="grid_1">
+  <igx-column field="orderId" dataType="number" header="orderId" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+  <igx-column field="customerId" dataType="string" header="customerId" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+  <igx-column field="employeeId" dataType="number" header="employeeId" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+  <igx-column field="shipperId" dataType="number" header="shipperId" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+  <igx-column field="orderDate" dataType="date" header="orderDate" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+  <igx-column field="requiredDate" dataType="date" header="requiredDate" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+  <igx-column field="shipVia" dataType="string" header="shipVia" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+  <igx-column field="freight" dataType="number" header="freight" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+  <igx-column field="shipName" dataType="string" header="shipName" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+  <igx-column field="completed" dataType="boolean" header="completed" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+</igx-grid>
+<igx-dialog [closeOnOutsideSelect]="true" #dialog>
+  <igx-dialog-title>
+    <h5>
+      Confirmation
+    </h5>
+  </igx-dialog-title>
+  <ng-container>
+    <iab-query-builder class="query-builder"></iab-query-builder>
+  </ng-container>
+  <igx-dialog-actions></igx-dialog-actions>
+</igx-dialog>

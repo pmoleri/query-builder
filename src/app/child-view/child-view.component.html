@@ -1,0 +1,5 @@
+<igx-grid [data]="northwindQBTerritoryDtoPagedResultDto?.items!" primaryKey="territoryId" [allowFiltering]="true" filterMode="excelStyleFilter" class="grid">
+  <igx-column field="territoryId" dataType="string" header="territoryId" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+  <igx-column field="territoryDescription" dataType="string" header="territoryDescription" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+  <igx-column field="regionId" dataType="number" header="regionId" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+</igx-grid>

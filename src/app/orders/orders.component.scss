@@ -1,0 +1,47 @@
+:host {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto auto auto auto 1fr;
+  justify-items: stretch;
+  align-items: stretch;
+}
+.row-layout {
+  display: flex;
+}
+.group {
+  background-color: var(--ig-primary-300);
+  justify-content: flex-start;
+  align-items: center;
+  align-content: flex-start;
+  gap: 5px;
+  position: relative;
+  padding: 8px;
+  min-height: 20px;
+  grid-column-end: span 2;
+}
+.content {
+  color: var(--ig-surface-500);
+  height: max-content;
+  min-width: min-content;
+}
+.grid {
+  --ig-size: var(--ig-size-medium);
+  min-width: 600px;
+  min-height: 300px;
+}
+.grid_1 {
+  --ig-size: var(--ig-size-medium);
+  min-width: 600px;
+  min-height: 300px;
+  grid-column-end: span 2;
+}
+.query-builder {
+  min-width: min-content;
+  min-height: min-content;
+}
+.button {
+  --ig-size: var(--ig-size-medium);
+  margin: 5px;
+  height: max-content;
+}
