@@ -7,7 +7,7 @@ import { ProductDto } from '../models/northwind-qb/product-dto';
 import { EmployeeDto } from '../models/northwind-qb/employee-dto';
 import { ErrorHandlerService } from './error-handler.service';
 
-const API_ENDPOINT = 'https://data-northwind-qb.indigo.design';
+const API_ENDPOINT = 'https://data-northwind.indigo.design';
 
 @Injectable({
   providedIn: 'root'
@@ -17,32 +17,8 @@ export class NorthwindQBService {
     private http: HttpClient
   ) { }
 
-  public postQueryBuilderResult(): Observable<QueryBuilderResult | undefined> {
-    const body = {
-      entity: 'string',
-      returnFields: [
-        'string'
-      ],
-      operator: 'And',
-      filteringOperands: [
-        {
-          fieldName: 'string',
-          ignoreCase: true,
-          condition: {
-            name: 'string',
-            isUnary: true,
-            iconName: 'string'
-          },
-          searchVal: {},
-          searchTree: null,
-          operator: 'And',
-          filteringOperands: [
-            null
-          ]
-        }
-      ]
-    };
-    return this.http.post<QueryBuilderResult | undefined>(`${API_ENDPOINT}/QueryBuilder/ExecuteQuery`, body)
+  public postQueryBuilderResult(body: string): Observable<QueryBuilderResult | undefined> {
+        return this.http.post<QueryBuilderResult | undefined>(`${API_ENDPOINT}/QueryBuilder/ExecuteQuery`, body)
       .pipe(catchError(ErrorHandlerService.handleError<QueryBuilderResult | undefined>('postQueryBuilderResult', undefined)));
   }
 

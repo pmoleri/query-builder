@@ -3,7 +3,7 @@
     Select Employee and Product
   </h5>
 </div>
-<igx-grid [data]="northwindQBEmployeeDto" primaryKey="employeeId" rowSelection="single" [hideRowSelectors]="true" [allowFiltering]="true" filterMode="excelStyleFilter" (rowSelectionChanging)="selectedEmployee = $event?.rowData" class="grid">
+<igx-grid [data]="northwindQBEmployeeDto" primaryKey="employeeId" rowSelection="single" [hideRowSelectors]="true" [allowFiltering]="true" filterMode="excelStyleFilter" (rowSelectionChanging)="selectedEmployee = $event.newSelection[0]" class="grid">
   <igx-column field="employeeId" dataType="number" header="employeeId" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
   <igx-column field="lastName" dataType="string" header="lastName" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
   <igx-column field="firstName" dataType="string" header="firstName" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
@@ -16,7 +16,7 @@
   <igx-column field="avatarUrl" dataType="string" header="avatarUrl" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
   <igx-column field="reportsTo" dataType="number" header="reportsTo" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
 </igx-grid>
-<igx-grid [data]="northwindQBProductDto" primaryKey="productId" rowSelection="single" [hideRowSelectors]="true" [allowFiltering]="true" filterMode="excelStyleFilter" (rowSelectionChanging)="selectedProduct = $event?.rowData" class="grid">
+<igx-grid [data]="northwindQBProductDto" primaryKey="productId" rowSelection="single" [hideRowSelectors]="true" [allowFiltering]="true" filterMode="excelStyleFilter" (rowSelectionChanging)="selectedProduct = $event.newSelection[0]" class="grid">
   <igx-column field="productId" dataType="number" header="productId" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
   <igx-column field="productName" dataType="string" header="productName" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
   <igx-column field="supplierId" dataType="number" header="supplierId" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
@@ -70,7 +70,7 @@
     </h5>
   </igx-dialog-title>
   <ng-container>
-    <iab-query-builder class="query-builder"></iab-query-builder>
+    <igx-query-builder [entities]="ordersQueryEntities" [(expressionTree)]="ordersQueryExpression"></igx-query-builder>
   </ng-container>
   <igx-dialog-actions></igx-dialog-actions>
 </igx-dialog>
